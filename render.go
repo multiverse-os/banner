@@ -3,7 +3,6 @@ package banner
 import (
 	"bufio"
 	"bytes"
-	"io"
 	"path"
 	"strconv"
 	"strings"
@@ -22,7 +21,7 @@ type font struct {
 	letters   [][]string
 }
 
-func newFont(name string) (font font) {
+func loadFont(name string) (font font) {
 	font.name = name
 	if len(name) < 1 {
 		font.name = defaultFont
@@ -33,29 +32,27 @@ func newFont(name string) (font font) {
 	}
 	fontBytesReader := bytes.NewReader(fontBytes)
 	scanner := bufio.NewScanner(fontBytesReader)
-	font.setAttributes(scanner)
-	font.setLetters(scanner)
-	return font
-}
-
-func newFontFromReader(reader io.Reader) (font font) {
-	scanner := bufio.NewScanner(reader)
-	font.setAttributes(scanner)
-	font.setLetters(scanner)
-	return font
-}
-
-func (self *font) setAttributes(scanner *bufio.Scanner) {
 	for scanner.Scan() {
 		text := scanner.Text()
 		if strings.HasPrefix(text, magicSequence) {
-			self.height = getHeight(text)
-			fontData := strings.Fields(text)[2]
-			self.baseline, _ = strconv.Atoi(fontData)
-			self.hardblank = getHardblank(text)
+			// TODO: Thse function names are terrible, they are not decipherable for people
+			// not very aquainted with this development
+			fontData := strings.Fields(text)[1]
+			font.height, _ = strconv.Atoi(fontData)
+			fontData = strings.Fields(text)[2]
+			font.baseline, _ = strconv.Atoi(fontData)
+			fontData = strings.Fields(text)[0]
+			hardblank := fontData[len(fontData)-1]
+			if hardblank == hardblanksBlacklist[0] || hardblank == hardblanksBlacklist[1] {
+				font.hardblank = ' '
+			} else {
+				font.hardblank = hardblank
+			}
 			break
 		}
 	}
+	font.setLetters(scanner)
+	return font
 }
 
 func (self *font) setLetters(scanner *bufio.Scanner) {
@@ -84,24 +81,7 @@ func (self *font) setLetters(scanner *bufio.Scanner) {
 	}
 }
 
-func getHeight(text string) int {
-	fontData := strings.Fields(text)[1]
-	height, _ := strconv.Atoi(fontData)
-	return height
-}
-
-// TODO: Thse function names are terrible, they are not decipherable for people
-// not very aquainted with this development
-func getHardblank(text string) byte {
-	fontData := strings.Fields(text)[0]
-	hardblank := fontData[len(fontData)-1]
-	if hardblank == hardblanksBlacklist[0] || hardblank == hardblanksBlacklist[1] {
-		return ' '
-	} else {
-		return hardblank
-	}
-}
-
+// TODO: Fix this mess
 func lastCharLine(text string, height int) bool {
 	endOfLine, length := "  ", 2
 	if height == 1 && len(text) > 0 {

@@ -23,7 +23,7 @@ func (self Banner) String() (output string) {
 }
 
 func New(fontName, text string) Banner {
-	font := newFont(fontName)
+	font := loadFont(fontName)
 	banner := Banner{
 		Text: text,
 	}
