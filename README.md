@@ -32,3 +32,15 @@ func main() {
 	}
 }
 ```
+
+Resulting in the following output:
+
+```
+banner-cli: ASCII banner example
+================================
+  _                  _   
+ | |_    ___   ___  | |_ 
+ | __|  / _ \ / __| | __|
+ | |_  |  __/ \__ \ | |_ 
+  \__|  \___| |___/  \__|
+```
