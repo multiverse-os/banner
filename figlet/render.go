@@ -1,4 +1,4 @@
-package banner
+package figletbanner
 
 import (
 	"bufio"
