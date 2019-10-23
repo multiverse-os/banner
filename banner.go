@@ -15,12 +15,10 @@ func New(text string) Banner {
 }
 
 func (self Banner) Font(name string) Banner {
-	return Banner{
-		font: LoadFont(name),
-	}
+	self.font = LoadFont(name)
+	return self
 }
 
 func (self Banner) String() string {
-
-	return ""
+	return self.font.WriteString(self.text)
 }
