@@ -1,7 +1,6 @@
 package banner
 
 import (
-	"fmt"
 	"strings"
 
 	big "github.com/multiverse-os/cli/framework/text/banner/fonts/big"
@@ -64,7 +63,6 @@ func (self *Font) CharacterSpacing(whitespace int) *Font {
 
 func (self *Font) WriteString(text string) string {
 	outputLines := []string{}
-	fmt.Println("text:", text)
 	for _, character := range text {
 		fontCharacter := self.Characters[string(character)]
 		for index, line := range fontCharacter {
