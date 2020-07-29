@@ -3,8 +3,8 @@ package banner
 import (
 	"strings"
 
-	big "github.com/multiverse-os/cli/framework/text/banner/fonts/big"
-	giant "github.com/multiverse-os/cli/framework/text/banner/fonts/giant"
+	big "github.com/multiverse-os/banner/fonts/big"
+	giant "github.com/multiverse-os/banner/fonts/giant"
 )
 
 //type Character struct {
