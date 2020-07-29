@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	giant "github.com/multiverse-os/cli/framework/text/banner/fonts/giant"
+	giant "github.com/multiverse-os/banner/fonts/giant"
 )
 
 // TODO: Start writing tools for generating Go source code files on-the-fly to
