@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	//"os"
 )
 
 // TODO: Write a simple script to take a figlet font, and embed the characters

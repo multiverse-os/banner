@@ -1,7 +1,5 @@
 package banner
 
-var DefaultFont = "big"
-
 type Banner struct {
 	text string
 	font *Font
@@ -10,7 +8,7 @@ type Banner struct {
 func New(text string) Banner {
 	return Banner{
 		text: text,
-		font: LoadFont(DefaultFont),
+		font: LoadFont("big"),
 	}
 }
 
