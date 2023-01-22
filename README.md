@@ -2,5 +2,6 @@
 
 ## Multiverse OS: Banner
 **URL** [multiverse-os.org](https://multiverse-os.org)
-A minimal ASCII banner generator, capable of converting figlet fonts into
+
+A minimal ASCII banner generator, capable of converting `figlet` fonts into
 embedded go source files. 

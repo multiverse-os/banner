@@ -18,5 +18,5 @@ func main() {
 	fmt.Println("==========")
 
 	banner := banner.New(message).Font("big")
-	fmt.Println("banner:\n" + banner.String())
+	fmt.Printf("\n%s\n", banner.String())
 }
