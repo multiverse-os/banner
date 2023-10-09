@@ -1,4 +1,4 @@
-module github.com/multiverse-os/cli/terminal/text/banner
+module github.com/multiverse-os/banner
 
 go 1.19
 
