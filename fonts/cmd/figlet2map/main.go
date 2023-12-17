@@ -42,12 +42,12 @@ func main() {
 	// line by line by ensuring ascii only and not a delimeter
 }
 
-func (self *Font) GoSource() (output string) {
-	output += `package ` + fontName + `\n\n`
+func (font *Font) GoSource() (output string) {
+	output += `package ` + font.Name + `\n\n`
 	output += `var CharacterMap = map[string]string{`
-	for character, ascii := range self.CharacterMap {
+	for character, ascii := range font.CharacterMap {
 		output += `"` + character + `":`
-		otuput += "`" + ascii + "`,"
+		output += "`" + ascii + "`,"
 	}
 	output += `}`
 	return output
