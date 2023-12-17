@@ -2,8 +2,4 @@ module github.com/multiverse-os/banner
 
 go 1.19
 
-replace (
-	github.com/multiverse-os/banner/fonts v0.1.0 => ./fonts
-	github.com/multiverse-os/banner/fonts/big v0.1.0 => ./fonts/big
-	github.com/multiverse-os/banner/fonts/giant v0.1.0 => ./fonts/giant
-)
+replace github.com/multiverse-os/banner/fonts v0.1.0 => ./fonts
